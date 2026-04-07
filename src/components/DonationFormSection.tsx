@@ -2,12 +2,10 @@ import { useState } from "react";
 import { useDonation } from "@/contexts/DonationContext";
 import { Lock } from "lucide-react";
 
-const monthlyValues = [15, 30, 50];
 const onceValues = [30, 50, 100];
 
 const DonationFormSection = () => {
   const { type, amount, setType, setAmount } = useDonation();
-  const values = type === "monthly" ? monthlyValues : onceValues;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -70,56 +68,65 @@ const DonationFormSection = () => {
         </div>
 
         <div className="bg-background rounded-2xl shadow-lg p-6 md:p-8">
-          <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-            {type === "monthly"
-              ? "Você está prestes a ajudar a construir o único centro gratuito do Brasil para sequelas do câncer."
-              : "Sua doação vai direto para a construção do Instituto. Cada real conta."}
-          </p>
-
-          {/* Value buttons */}
-          <div className="grid grid-cols-4 gap-2 mb-6">
-            {values.map((v) => (
-              <button
-                key={v}
-                type="button"
-                onClick={() => { setAmount(v); setCustomAmount(""); }}
-                className={`py-2.5 rounded-lg text-sm font-semibold border transition-colors ${
-                  amount === v
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-background text-foreground border-border hover:border-primary/50"
-                }`}
-              >
-                R$ {v}
-              </button>
-            ))}
-            <button
-              type="button"
-              onClick={() => setAmount(null)}
-              className={`py-2.5 rounded-lg text-sm font-semibold border transition-colors ${
-                amount === null
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-background text-foreground border-border hover:border-primary/50"
-              }`}
-            >
-              Outro
-            </button>
-          </div>
-
-          {amount === null && (
-            <div className="mb-6">
-              <label className="text-sm font-medium text-foreground mb-1.5 block">Valor personalizado</label>
-              <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">R$</span>
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  value={customAmount}
-                  onChange={(e) => setCustomAmount(e.target.value.replace(/\D/g, ""))}
-                  placeholder="0"
-                  className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                />
+          {type === "monthly" ? (
+            <>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Você está prestes a ajudar a construir o único centro gratuito do Brasil para sequelas do câncer.
+              </p>
+              <div className="bg-accent/50 rounded-xl p-4 mb-6 text-center">
+                <p className="text-2xl font-bold text-foreground">R$ 30<span className="text-sm font-normal text-muted-foreground">/mês</span></p>
+                <p className="text-xs text-muted-foreground mt-1">Equivalente a R$ 1 por dia · Recorrente até você cancelar</p>
               </div>
-            </div>
+            </>
+          ) : (
+            <>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                Sua doação vai direto para a construção do Instituto. Cada real conta.
+              </p>
+              <div className="grid grid-cols-4 gap-2 mb-6">
+                {onceValues.map((v) => (
+                  <button
+                    key={v}
+                    type="button"
+                    onClick={() => { setAmount(v); setCustomAmount(""); }}
+                    className={`py-2.5 rounded-lg text-sm font-semibold border transition-colors ${
+                      amount === v
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background text-foreground border-border hover:border-primary/50"
+                    }`}
+                  >
+                    R$ {v}
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => setAmount(null)}
+                  className={`py-2.5 rounded-lg text-sm font-semibold border transition-colors ${
+                    amount === null
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-background text-foreground border-border hover:border-primary/50"
+                  }`}
+                >
+                  Outro
+                </button>
+              </div>
+              {amount === null && (
+                <div className="mb-6">
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Valor personalizado</label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">R$</span>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={customAmount}
+                      onChange={(e) => setCustomAmount(e.target.value.replace(/\D/g, ""))}
+                      placeholder="0"
+                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                    />
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
