@@ -75,7 +75,6 @@ const DonationFormSection = () => {
               </p>
               <div className="bg-accent/50 rounded-xl p-4 mb-6 text-center">
                 <p className="text-2xl font-bold text-foreground">R$ 30<span className="text-sm font-normal text-muted-foreground">/mês</span></p>
-                <p className="text-xs text-muted-foreground mt-1">Equivalente a R$ 1 por dia · Recorrente até você cancelar</p>
               </div>
             </>
           ) : (
