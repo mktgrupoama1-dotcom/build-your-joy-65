@@ -30,7 +30,7 @@ const HeroSection = () => {
               Transforme uma{" "}
               <span className="text-secondary">vida.</span>
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/85 leading-relaxed">
+            <p className="text-xl md:text-2xl text-primary-foreground/85 leading-relaxed">
               Quem venceu o câncer não deveria continuar sofrendo sozinho. Seja parte da cura que vem depois.
             </p>
           </div>
