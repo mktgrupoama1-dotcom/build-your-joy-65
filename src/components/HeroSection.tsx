@@ -21,7 +21,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroImg} alt="Pessoa sorrindo após tratamento" className="w-full h-full object-cover object-left" width={1920} height={1080} />
+        <img src={isMobile ? heroMobileImg : heroImg} alt="Pessoa sorrindo após tratamento" className="w-full h-full object-cover object-left" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/50 to-foreground/30" />
       </div>
 
