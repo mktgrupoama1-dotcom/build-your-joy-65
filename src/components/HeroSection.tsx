@@ -1,5 +1,7 @@
 import { useState } from "react";
 import heroImg from "@/assets/hero.jpg";
+import heroMobileImg from "@/assets/hero-mobile.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useDonation } from "@/contexts/DonationContext";
 import { ArrowRight } from "lucide-react";
 
