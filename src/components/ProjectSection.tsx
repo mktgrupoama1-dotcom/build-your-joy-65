@@ -30,14 +30,16 @@ const ProjectSection = () => {
             </div>
           </div>
           <div className="relative">
-            <img
-              src={buildingImg}
-              alt="Projeto arquitetônico do instituto"
-              className="rounded-3xl shadow-2xl w-full"
-              loading="lazy"
-              width={1280}
-              height={720}
-            />
+            <div className="rounded-3xl shadow-2xl overflow-hidden w-full aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/FtnPZHHNa8Y"
+                title="Vídeo do projeto"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+                loading="lazy"
+              />
+            </div>
             <div className="absolute -bottom-4 -left-4 bg-primary text-primary-foreground rounded-2xl px-6 py-4 shadow-lg">
               <p className="text-sm font-medium">Um lugar onde o cuidado</p>
               <p className="text-lg font-bold">continua depois da cura.</p>
