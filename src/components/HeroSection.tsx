@@ -1,11 +1,14 @@
 import { useState } from "react";
 import heroImg from "@/assets/hero.jpg";
+import heroMobileImg from "@/assets/hero-mobile.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useDonation } from "@/contexts/DonationContext";
 import { ArrowRight } from "lucide-react";
 
 type Tab = "monthly" | "once";
 
 const HeroSection = () => {
+  const isMobile = useIsMobile();
   const { setType, setAmount } = useDonation();
   const [activeTab, setActiveTab] = useState<Tab>("monthly");
 
@@ -18,7 +21,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroImg} alt="Pessoa sorrindo após tratamento" className="w-full h-full object-cover object-left" width={1920} height={1080} />
+        <img src={isMobile ? heroMobileImg : heroImg} alt="Pessoa sorrindo após tratamento" className="w-full h-full object-cover object-left" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/50 to-foreground/30" />
       </div>
 
