@@ -4,6 +4,14 @@ import { Lock } from "lucide-react";
 
 const onceValues = [30, 50, 100];
 
+const stripeLinks: Record<string, string> = {
+  monthly: "https://buy.stripe.com/aFabJ26CI37wfcx8wQ6kg00",
+  once_30: "https://buy.stripe.com/aFadRa3qw6jI8O914o6kg02",
+  once_50: "https://buy.stripe.com/3cI5kE4uA0Zo2pL28s6kg03",
+  once_100: "https://buy.stripe.com/3cI14o1io7nMaWh14o6kg04",
+  once_other: "https://buy.stripe.com/fZu6oIgdicI68O96oI6kg05",
+};
+
 const DonationFormSection = () => {
   const { type, amount, setType, setAmount } = useDonation();
 
@@ -17,7 +25,19 @@ const DonationFormSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // future integration
+    let link: string;
+    if (type === "monthly") {
+      link = stripeLinks.monthly;
+    } else if (amount === 30) {
+      link = stripeLinks.once_30;
+    } else if (amount === 50) {
+      link = stripeLinks.once_50;
+    } else if (amount === 100) {
+      link = stripeLinks.once_100;
+    } else {
+      link = stripeLinks.once_other;
+    }
+    window.open(link, "_blank");
   };
 
   const formatCpf = (value: string) => {
