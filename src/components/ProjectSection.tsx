@@ -32,7 +32,7 @@ const ProjectSection = () => {
           <div className="relative">
             <div className="rounded-3xl shadow-2xl overflow-hidden w-full aspect-video">
               <iframe
-                src="https://www.youtube.com/embed/FtnPZHHNa8Y"
+                src="https://www.youtube.com/embed/aYaUiBU8swE"
                 title="Vídeo do projeto"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
