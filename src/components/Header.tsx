@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoImg from "@/assets/logos_usar.png";
+import logoImg from "@/assets/logo.png";
 
 const navItems = [
   { label: "O Instituto", href: "#instituto" },
