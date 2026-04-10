@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 type Tab = "monthly" | "once";
 
 const HeroSection = () => {
+  const isMobile = useIsMobile();
   const { setType, setAmount } = useDonation();
   const [activeTab, setActiveTab] = useState<Tab>("monthly");
 
