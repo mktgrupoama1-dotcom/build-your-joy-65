@@ -1,5 +1,5 @@
 import { useState } from "react";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero.png";
 import heroMobileImg from "@/assets/hero-mobile.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useDonation } from "@/contexts/DonationContext";
@@ -22,7 +22,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
         <img src={isMobile ? heroMobileImg : heroImg} alt="Pessoa sorrindo após tratamento" className="w-full h-full object-cover object-left" width={1920} height={1080} />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/50 to-foreground/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/40 via-foreground/20 to-transparent" />
       </div>
 
       <div className="relative container mx-auto px-4 py-32 md:py-0">
