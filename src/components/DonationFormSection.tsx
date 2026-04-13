@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDonation } from "@/contexts/DonationContext";
-import { Lock, Heart } from "lucide-react";
+import { Lock, Heart, Sparkles } from "lucide-react";
 
 const onceValues = [30, 50, 100];
 
@@ -55,53 +55,57 @@ const DonationFormSection = () => {
   };
 
   return (
-    <section id="formulario-doacao" className="section-padding bg-gradient-to-b from-muted/40 to-background relative overflow-hidden">
-      <div className="absolute top-0 left-1/3 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
+    <section id="formulario-doacao" className="section-padding bg-gradient-to-b from-muted/40 via-muted/20 to-background relative overflow-hidden">
+      <div className="absolute top-0 left-1/3 w-80 h-80 bg-primary/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/8 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl" />
 
       <div className="container mx-auto max-w-xl relative">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider bg-accent px-4 py-1.5 rounded-full mb-4">
-            <Heart size={14} />
+          <span className="section-badge mb-4">
+            <Heart size={14} className="text-primary animate-bounce-gentle" />
             Apoie
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Finalize sua doação
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-3">
+            Finalize sua doação 💛
           </h2>
         </div>
 
         {/* Tabs */}
-        <div className="flex rounded-xl overflow-hidden border border-border mb-8">
+        <div className="flex rounded-xl overflow-hidden border-2 border-primary/20 mb-8 shadow-md">
           <button
             onClick={() => { setType("monthly"); setAmount(30); }}
-            className={`flex-1 py-3 text-sm font-semibold transition-all duration-300 ${
+            className={`flex-1 py-3.5 text-sm font-semibold transition-all duration-300 ${
               type === "monthly"
-                ? "gradient-primary text-primary-foreground"
-                : "bg-background text-muted-foreground hover:text-foreground"
+                ? "gradient-primary text-primary-foreground shadow-inner"
+                : "bg-background text-muted-foreground hover:text-foreground hover:bg-accent/50"
             }`}
           >
-            Doação mensal (R$ 1/dia)
+            💛 Doação mensal (R$ 1/dia)
           </button>
           <button
             onClick={() => { setType("once"); setAmount(50); }}
-            className={`flex-1 py-3 text-sm font-semibold transition-all duration-300 ${
+            className={`flex-1 py-3.5 text-sm font-semibold transition-all duration-300 ${
               type === "once"
-                ? "gradient-primary text-primary-foreground"
-                : "bg-background text-muted-foreground hover:text-foreground"
+                ? "gradient-primary text-primary-foreground shadow-inner"
+                : "bg-background text-muted-foreground hover:text-foreground hover:bg-accent/50"
             }`}
           >
-            Doação única
+            ❤️ Doação única
           </button>
         </div>
 
-        <div className="bg-background rounded-2xl shadow-xl p-6 md:p-8 border border-border/50">
+        <div className="bg-background rounded-2xl shadow-2xl p-6 md:p-8 border border-border/50 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 gradient-vivid" />
+          
           {type === "monthly" ? (
             <>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 Você está prestes a ajudar a construir o único centro gratuito do Brasil para sequelas do câncer.
               </p>
-              <div className="bg-gradient-to-r from-accent to-warm-gold-light rounded-xl p-4 mb-6 text-center">
-                <p className="text-2xl font-bold text-foreground">R$ 30<span className="text-sm font-normal text-muted-foreground">/mês</span></p>
+              <div className="bg-gradient-to-r from-accent via-warm-gold-light to-accent rounded-xl p-5 mb-6 text-center border border-secondary/20">
+                <p className="text-3xl font-bold text-foreground">R$ 30<span className="text-sm font-normal text-muted-foreground">/mês</span></p>
+                <p className="text-xs text-muted-foreground mt-1">Equivalente a R$ 1 por dia</p>
               </div>
             </>
           ) : (
@@ -115,10 +119,10 @@ const DonationFormSection = () => {
                     key={v}
                     type="button"
                     onClick={() => { setAmount(v); setCustomAmount(""); }}
-                    className={`py-2.5 rounded-lg text-sm font-semibold border transition-all duration-300 ${
+                    className={`py-3 rounded-xl text-sm font-semibold border-2 transition-all duration-300 ${
                       amount === v
-                        ? "gradient-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
-                        : "bg-background text-foreground border-border hover:border-primary/50"
+                        ? "gradient-primary text-primary-foreground border-primary shadow-lg shadow-primary/20 scale-105"
+                        : "bg-background text-foreground border-border hover:border-primary/50 hover:scale-105"
                     }`}
                   >
                     R$ {v}
@@ -127,10 +131,10 @@ const DonationFormSection = () => {
                 <button
                   type="button"
                   onClick={() => setAmount(null)}
-                  className={`py-2.5 rounded-lg text-sm font-semibold border transition-all duration-300 ${
+                  className={`py-3 rounded-xl text-sm font-semibold border-2 transition-all duration-300 ${
                     amount === null
-                      ? "gradient-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
-                      : "bg-background text-foreground border-border hover:border-primary/50"
+                      ? "gradient-primary text-primary-foreground border-primary shadow-lg shadow-primary/20 scale-105"
+                      : "bg-background text-foreground border-border hover:border-primary/50 hover:scale-105"
                   }`}
                 >
                   Outro
@@ -147,7 +151,7 @@ const DonationFormSection = () => {
                       value={customAmount}
                       onChange={(e) => setCustomAmount(e.target.value.replace(/\D/g, ""))}
                       placeholder="0"
-                      className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                      className="w-full pl-10 pr-3 py-2.5 rounded-xl border-2 border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary"
                     />
                   </div>
                 </div>
@@ -163,7 +167,7 @@ const DonationFormSection = () => {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full px-3 py-2.5 rounded-xl border-2 border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary transition-all"
                 placeholder="Seu nome"
               />
             </div>
@@ -174,7 +178,7 @@ const DonationFormSection = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full px-3 py-2.5 rounded-xl border-2 border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary transition-all"
                 placeholder="seu@email.com"
               />
             </div>
@@ -185,7 +189,7 @@ const DonationFormSection = () => {
                 required
                 value={cpf}
                 onChange={(e) => setCpf(formatCpf(e.target.value))}
-                className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full px-3 py-2.5 rounded-xl border-2 border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary transition-all"
                 placeholder="000.000.000-00"
                 maxLength={14}
               />
@@ -196,7 +200,7 @@ const DonationFormSection = () => {
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(formatPhone(e.target.value))}
-                className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full px-3 py-2.5 rounded-xl border-2 border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary transition-all"
                 placeholder="(00) 00000-0000"
                 maxLength={15}
               />
@@ -204,8 +208,9 @@ const DonationFormSection = () => {
 
             <button
               type="submit"
-              className="w-full gradient-primary text-primary-foreground py-3.5 rounded-full text-base font-bold hover:opacity-90 transition-all duration-300 mt-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
+              className="w-full gradient-vivid text-primary-foreground py-4 rounded-full text-base font-bold hover:opacity-90 transition-all duration-300 mt-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] flex items-center justify-center gap-2"
             >
+              <Sparkles size={18} />
               {type === "monthly" ? "Confirmar doação mensal" : "Confirmar minha doação"}
             </button>
           </form>

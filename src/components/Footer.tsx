@@ -1,16 +1,20 @@
-import { Heart, Mail, MapPin, Instagram } from "lucide-react";
+import { Heart, Mail, MapPin, Instagram, ArrowUp } from "lucide-react";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="gradient-dark section-padding relative overflow-hidden">
-      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/8 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/8 rounded-full blur-3xl" />
 
       <div className="container mx-auto relative">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
             <h3 className="text-xl font-bold text-primary-foreground font-serif mb-4">
-              Lugar de quem <span className="text-secondary">AMA</span>
+              Lugar de quem <span className="text-secondary">AMA</span> 💛
             </h3>
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Instituto Lugar de quem AMA<br />
@@ -21,12 +25,12 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold text-primary-foreground uppercase tracking-wider mb-4">Contato</h4>
             <div className="space-y-3">
-              <a href="mailto:contato@lugardequeama.org.br" className="flex items-center gap-2 text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
-                <Mail size={16} />
+              <a href="mailto:contato@lugardequeama.org.br" className="flex items-center gap-2 text-primary-foreground/60 hover:text-secondary text-sm transition-colors group">
+                <Mail size={16} className="group-hover:scale-110 transition-transform" />
                 contato@lugardequeama.org.br
               </a>
-              <a href="https://instagram.com/lugardequemama" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
-                <Instagram size={16} />
+              <a href="https://instagram.com/lugardequemama" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary-foreground/60 hover:text-secondary text-sm transition-colors group">
+                <Instagram size={16} className="group-hover:scale-110 transition-transform" />
                 @lugardequemama
               </a>
               <div className="flex items-start gap-2 text-primary-foreground/60 text-sm">
@@ -39,7 +43,7 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-primary-foreground uppercase tracking-wider mb-4">Navegação</h4>
             <div className="space-y-2">
               {["O Instituto", "O Projeto", "Tratamentos", "Impacto", "Apoie"].map((label) => (
-                <a key={label} href={`#${label.toLowerCase().replace("o ", "")}`} className="block text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
+                <a key={label} href={`#${label.toLowerCase().replace("o ", "")}`} className="block text-primary-foreground/60 hover:text-secondary text-sm transition-colors hover:translate-x-1 transition-transform duration-200">
                   {label}
                 </a>
               ))}
@@ -50,9 +54,17 @@ const Footer = () => {
           <p className="text-primary-foreground/40 text-sm">
             © {new Date().getFullYear()} Instituto Lugar de quem AMA. Todos os direitos reservados.
           </p>
-          <p className="text-primary-foreground/40 text-sm flex items-center gap-1">
-            Feito com <Heart size={12} fill="currentColor" className="text-primary" /> para quem precisa de cuidado.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-primary-foreground/40 text-sm flex items-center gap-1">
+              Feito com <Heart size={12} fill="currentColor" className="text-primary" /> para quem precisa de cuidado.
+            </p>
+            <button
+              onClick={scrollToTop}
+              className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center text-primary-foreground hover:scale-110 transition-transform shadow-lg shadow-primary/30"
+            >
+              <ArrowUp size={18} />
+            </button>
+          </div>
         </div>
       </div>
     </footer>

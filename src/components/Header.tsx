@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 
 const navItems = [
@@ -14,7 +14,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50 shadow-sm">
       <div className="container mx-auto flex items-center justify-between py-3">
         <a href="#" className="flex items-center gap-2">
           <img src={logoImg} alt="Lugar de quem AMA" className="h-12 object-contain" />
@@ -24,15 +24,16 @@ const Header = () => {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
             >
               {item.label}
             </a>
           ))}
           <a
             href="#apoie"
-            className="bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="gradient-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:scale-105 flex items-center gap-1.5"
           >
+            <Heart size={14} />
             Doe Agora
           </a>
         </nav>
@@ -41,13 +42,13 @@ const Header = () => {
         </button>
       </div>
       {open && (
-        <div className="md:hidden bg-background border-t border-border px-4 pb-4">
+        <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border px-4 pb-4">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-sm font-medium text-muted-foreground hover:text-primary"
+              className="block py-3 text-sm font-medium text-muted-foreground hover:text-primary border-b border-border/30 last:border-0"
             >
               {item.label}
             </a>
@@ -55,9 +56,9 @@ const Header = () => {
           <a
             href="#apoie"
             onClick={() => setOpen(false)}
-            className="block mt-2 bg-primary text-primary-foreground text-center px-5 py-2.5 rounded-full text-sm font-semibold"
+            className="block mt-3 gradient-primary text-primary-foreground text-center px-5 py-2.5 rounded-full text-sm font-semibold shadow-md"
           >
-            Doe Agora
+            ❤️ Doe Agora
           </a>
         </div>
       )}
