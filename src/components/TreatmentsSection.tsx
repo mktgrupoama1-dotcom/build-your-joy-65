@@ -11,12 +11,16 @@ const treatments = [
 
 const TreatmentsSection = () => {
   return (
-    <section id="tratamentos" className="section-padding bg-background">
-      <div className="container mx-auto">
+    <section id="tratamentos" className="section-padding bg-background relative overflow-hidden">
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl opacity-50 translate-y-1/2 translate-x-1/4" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-warm-gold-light rounded-full blur-3xl opacity-30 -translate-y-1/2" />
+
+      <div className="container mx-auto relative">
         <div className="text-center mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Tratamentos</span>
+          <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider bg-accent px-4 py-1.5 rounded-full mb-4">Tratamentos</span>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-3 mb-4">
-            Um cuidado completo para quem precisa recomeçar
+            Um cuidado completo para quem precisa{" "}
+            <span className="text-gradient">recomeçar</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Atendimento multidisciplinar com recursos modernos de reabilitação e acolhimento humanizado.
@@ -26,10 +30,10 @@ const TreatmentsSection = () => {
           {treatments.map((t, i) => (
             <div
               key={i}
-              className="group bg-card rounded-2xl p-7 border border-border hover:border-primary/30 hover:shadow-lg transition-all"
+              className="group bg-card rounded-2xl p-7 border border-border hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent group-hover:bg-primary/10 flex items-center justify-center mb-4 transition-colors">
-                <t.icon className="text-accent-foreground group-hover:text-primary transition-colors" size={24} />
+              <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <t.icon className="text-primary-foreground" size={24} />
               </div>
               <h3 className="text-lg font-bold text-foreground mb-2 font-serif">{t.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{t.desc}</p>

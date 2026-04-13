@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDonation } from "@/contexts/DonationContext";
-import { Lock } from "lucide-react";
+import { Lock, Heart } from "lucide-react";
 
 const onceValues = [30, 50, 100];
 
@@ -20,8 +20,6 @@ const DonationFormSection = () => {
   const [cpf, setCpf] = useState("");
   const [phone, setPhone] = useState("");
   const [customAmount, setCustomAmount] = useState("");
-
-  const displayAmount = amount !== null ? `R$ ${amount}` : customAmount ? `R$ ${customAmount}` : "";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,19 +55,28 @@ const DonationFormSection = () => {
   };
 
   return (
-    <section id="formulario-doacao" className="section-padding bg-muted/40">
-      <div className="container mx-auto max-w-xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-8">
-          Finalize sua doação
-        </h2>
+    <section id="formulario-doacao" className="section-padding bg-gradient-to-b from-muted/40 to-background relative overflow-hidden">
+      <div className="absolute top-0 left-1/3 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
+
+      <div className="container mx-auto max-w-xl relative">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider bg-accent px-4 py-1.5 rounded-full mb-4">
+            <Heart size={14} />
+            Apoie
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            Finalize sua doação
+          </h2>
+        </div>
 
         {/* Tabs */}
         <div className="flex rounded-xl overflow-hidden border border-border mb-8">
           <button
             onClick={() => { setType("monthly"); setAmount(30); }}
-            className={`flex-1 py-3 text-sm font-semibold transition-colors ${
+            className={`flex-1 py-3 text-sm font-semibold transition-all duration-300 ${
               type === "monthly"
-                ? "bg-primary text-primary-foreground"
+                ? "gradient-primary text-primary-foreground"
                 : "bg-background text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -77,9 +84,9 @@ const DonationFormSection = () => {
           </button>
           <button
             onClick={() => { setType("once"); setAmount(50); }}
-            className={`flex-1 py-3 text-sm font-semibold transition-colors ${
+            className={`flex-1 py-3 text-sm font-semibold transition-all duration-300 ${
               type === "once"
-                ? "bg-primary text-primary-foreground"
+                ? "gradient-primary text-primary-foreground"
                 : "bg-background text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -87,13 +94,13 @@ const DonationFormSection = () => {
           </button>
         </div>
 
-        <div className="bg-background rounded-2xl shadow-lg p-6 md:p-8">
+        <div className="bg-background rounded-2xl shadow-xl p-6 md:p-8 border border-border/50">
           {type === "monthly" ? (
             <>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 Você está prestes a ajudar a construir o único centro gratuito do Brasil para sequelas do câncer.
               </p>
-              <div className="bg-accent/50 rounded-xl p-4 mb-6 text-center">
+              <div className="bg-gradient-to-r from-accent to-warm-gold-light rounded-xl p-4 mb-6 text-center">
                 <p className="text-2xl font-bold text-foreground">R$ 30<span className="text-sm font-normal text-muted-foreground">/mês</span></p>
               </div>
             </>
@@ -108,9 +115,9 @@ const DonationFormSection = () => {
                     key={v}
                     type="button"
                     onClick={() => { setAmount(v); setCustomAmount(""); }}
-                    className={`py-2.5 rounded-lg text-sm font-semibold border transition-colors ${
+                    className={`py-2.5 rounded-lg text-sm font-semibold border transition-all duration-300 ${
                       amount === v
-                        ? "bg-primary text-primary-foreground border-primary"
+                        ? "gradient-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
                         : "bg-background text-foreground border-border hover:border-primary/50"
                     }`}
                   >
@@ -120,9 +127,9 @@ const DonationFormSection = () => {
                 <button
                   type="button"
                   onClick={() => setAmount(null)}
-                  className={`py-2.5 rounded-lg text-sm font-semibold border transition-colors ${
+                  className={`py-2.5 rounded-lg text-sm font-semibold border transition-all duration-300 ${
                     amount === null
-                      ? "bg-primary text-primary-foreground border-primary"
+                      ? "gradient-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
                       : "bg-background text-foreground border-border hover:border-primary/50"
                   }`}
                 >
@@ -197,7 +204,7 @@ const DonationFormSection = () => {
 
             <button
               type="submit"
-              className="w-full bg-primary text-primary-foreground py-3.5 rounded-full text-base font-bold hover:opacity-90 transition-opacity mt-2"
+              className="w-full gradient-primary text-primary-foreground py-3.5 rounded-full text-base font-bold hover:opacity-90 transition-all duration-300 mt-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
             >
               {type === "monthly" ? "Confirmar doação mensal" : "Confirmar minha doação"}
             </button>
