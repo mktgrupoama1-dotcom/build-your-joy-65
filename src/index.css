@@ -92,8 +92,24 @@
     animation: pulseSoft 3s ease-in-out infinite;
   }
 
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+
   .bg-warm-cream {
     background-color: hsl(var(--warm-cream));
+  }
+
+  .bg-warm-gold-light {
+    background-color: hsl(var(--warm-gold-light));
   }
 
   .gradient-warm {
@@ -108,8 +124,34 @@
     background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(15 30% 20%) 50%, hsl(5 40% 18%) 100%);
   }
 
+  .gradient-vivid {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--primary)) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  .gradient-warm-vivid {
+    background: linear-gradient(135deg, hsl(35 80% 94%) 0%, hsl(40 90% 85%) 30%, hsl(5 60% 92%) 60%, hsl(35 70% 95%) 100%);
+  }
+
   .glass-card {
     @apply bg-background/80 backdrop-blur-sm border border-border/50 shadow-lg;
+  }
+
+  .card-hover-lift {
+    @apply hover:-translate-y-2 hover:shadow-2xl transition-all duration-500;
+  }
+
+  .icon-box {
+    @apply flex items-center justify-center rounded-2xl shadow-lg;
+  }
+
+  .section-badge {
+    @apply inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider bg-accent px-5 py-2 rounded-full border border-primary/20 shadow-sm;
+  }
+
+  .colored-border-left {
+    border-left: 4px solid hsl(var(--primary));
   }
 }
 
@@ -137,4 +179,25 @@
 @keyframes pulseSoft {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px hsl(var(--primary) / 0.2); }
+  to { box-shadow: 0 0 40px hsl(var(--primary) / 0.4), 0 0 60px hsl(var(--secondary) / 0.2); }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
