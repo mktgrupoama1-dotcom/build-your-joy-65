@@ -39,14 +39,14 @@ const HeroSection = () => {
           </div>
 
           {/* Right column — Card */}
-          <div className="w-full max-w-md bg-background rounded-2xl shadow-2xl overflow-hidden">
+          <div className="w-full max-w-md bg-background/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-border/30">
             {/* Tabs */}
             <div className="flex p-4 pb-0 gap-3">
               <button
                 onClick={() => setActiveTab("monthly")}
-                className={`flex-1 py-3 rounded-xl text-sm font-bold transition-colors ${
+                className={`flex-1 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${
                   activeTab === "monthly"
-                    ? "bg-primary text-primary-foreground"
+                    ? "gradient-primary text-primary-foreground shadow-md shadow-primary/30"
                     : "bg-transparent text-foreground border border-border hover:border-primary/50"
                 }`}
               >
@@ -54,9 +54,9 @@ const HeroSection = () => {
               </button>
               <button
                 onClick={() => setActiveTab("once")}
-                className={`flex-1 py-3 rounded-xl text-sm font-bold transition-colors ${
+                className={`flex-1 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${
                   activeTab === "once"
-                    ? "bg-primary text-primary-foreground"
+                    ? "gradient-primary text-primary-foreground shadow-md shadow-primary/30"
                     : "bg-transparent text-foreground border border-border hover:border-primary/50"
                 }`}
               >
@@ -77,7 +77,7 @@ const HeroSection = () => {
 
               <button
                 onClick={scrollToForm}
-                className="w-full bg-primary text-primary-foreground py-3.5 rounded-xl text-base font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                className="w-full gradient-primary text-primary-foreground py-3.5 rounded-xl text-base font-bold hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
               >
                 {activeTab === "monthly" ? "Quero transformar uma vida agora" : "Quero fazer minha doação"}
                 <ArrowRight size={18} />

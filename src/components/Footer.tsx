@@ -2,8 +2,11 @@ import { Heart, Mail, MapPin, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground section-padding">
-      <div className="container mx-auto">
+    <footer className="gradient-dark section-padding relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
+
+      <div className="container mx-auto relative">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
             <h3 className="text-xl font-bold text-primary-foreground font-serif mb-4">
