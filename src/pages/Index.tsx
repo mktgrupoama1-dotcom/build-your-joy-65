@@ -1,3 +1,4 @@
+import WaveDivider from "@/components/WaveDivider";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -17,14 +18,23 @@ const Index = () => {
       <div className="min-h-screen">
         <Header />
         <HeroSection />
+        <WaveDivider from="hsl(var(--foreground))" to="hsl(var(--background))" />
         <AboutSection />
+        <WaveDivider from="hsl(var(--background))" to="hsl(var(--warm-cream))" />
         <ProjectSection />
+        <WaveDivider from="hsl(var(--warm-cream))" to="hsl(var(--foreground))" />
         <ProblemSection />
+        <WaveDivider from="hsl(var(--foreground))" to="hsl(var(--warm-cream))" />
         <SequelaeSection />
+        <WaveDivider from="hsl(var(--warm-cream))" to="hsl(var(--background))" />
         <TreatmentsSection />
+        <WaveDivider from="hsl(var(--background))" to="hsl(var(--warm-cream))" />
         <ConstructionSection />
+        <WaveDivider from="hsl(var(--warm-cream))" to="hsl(var(--background))" />
         <ImpactSection />
+        <WaveDivider from="hsl(var(--background))" to="hsl(var(--muted))" />
         <DonationFormSection />
+        <WaveDivider from="hsl(var(--muted))" to="hsl(var(--foreground))" />
         <Footer />
       </div>
     </DonationProvider>
