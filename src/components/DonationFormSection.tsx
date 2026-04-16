@@ -17,7 +17,7 @@ const DonationFormSection = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [cpf, setCpf] = useState("");
+  
   const [phone, setPhone] = useState("");
   const [customAmount, setCustomAmount] = useState("");
 
@@ -38,13 +38,6 @@ const DonationFormSection = () => {
     window.open(link, "_blank");
   };
 
-  const formatCpf = (value: string) => {
-    const digits = value.replace(/\D/g, "").slice(0, 11);
-    return digits
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-  };
 
   const formatPhone = (value: string) => {
     const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -180,18 +173,6 @@ const DonationFormSection = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2.5 rounded-xl border-2 border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary transition-all"
                 placeholder="seu@email.com"
-              />
-            </div>
-            <div>
-              <label className="text-sm font-medium text-foreground mb-1.5 block">CPF</label>
-              <input
-                type="text"
-                required
-                value={cpf}
-                onChange={(e) => setCpf(formatCpf(e.target.value))}
-                className="w-full px-3 py-2.5 rounded-xl border-2 border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary transition-all"
-                placeholder="000.000.000-00"
-                maxLength={14}
               />
             </div>
             <div>
