@@ -15,25 +15,25 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50 shadow-sm">
-      <div className="container mx-auto flex items-center justify-between py-3">
+      <div className="container mx-auto flex items-center justify-between py-4">
         <a href="#" className="flex items-center gap-2">
-          <img src={logoImg} alt="Lugar de quem AMA" className="h-12 object-contain" />
+          <img src={logoImg} alt="Lugar de quem AMA" className="h-16 object-contain" />
         </a>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-base font-medium text-muted-foreground hover:text-primary transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
+              className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
             >
               {item.label}
             </a>
           ))}
           <a
             href="#apoie"
-            className="gradient-primary text-primary-foreground px-6 py-2.5 rounded-full text-base font-semibold hover:opacity-90 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:scale-105 flex items-center gap-1.5"
+            className="gradient-primary text-primary-foreground px-7 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:scale-105 flex items-center gap-2"
           >
-            <Heart size={14} />
+            <Heart size={18} />
             Doe Agora
           </a>
         </nav>
