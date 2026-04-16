@@ -10,6 +10,7 @@ import ImpactSection from "@/components/ImpactSection";
 import ConstructionSection from "@/components/ConstructionSection";
 import DonationFormSection from "@/components/DonationFormSection";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import { DonationProvider } from "@/contexts/DonationContext";
 
 const Index = () => {
@@ -36,6 +37,7 @@ const Index = () => {
         <DonationFormSection />
         <WaveDivider from="hsl(var(--muted))" to="hsl(var(--foreground))" />
         <Footer />
+        <BackToTop />
       </div>
     </DonationProvider>
   );
