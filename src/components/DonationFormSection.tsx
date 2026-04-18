@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDonation } from "@/contexts/DonationContext";
-import { Lock, Heart, Sparkles } from "lucide-react";
+import { Lock, Heart, Sparkles, Copy } from "lucide-react";
+import { toast } from "sonner";
+
+const PIX_CODE = "00020126360014br.gov.bcb.pix0114323992450001205204000053039865802BR5925INSTITUTO PRETO NO BRANCO6014BELO HORIZONTE62070503***6304C364";
 
 const onceValues = [30, 50, 100];
 
