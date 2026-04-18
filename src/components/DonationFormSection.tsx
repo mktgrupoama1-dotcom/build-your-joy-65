@@ -63,7 +63,7 @@ const DonationFormSection = () => {
             Apoie
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-3">
-            Finalize sua doação 💛
+            {type === "once" ? "Doe via Pix 💛" : "Finalize sua doação 💛"}
           </h2>
         </div>
 
