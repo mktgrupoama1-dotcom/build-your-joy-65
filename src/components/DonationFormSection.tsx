@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDonation } from "@/contexts/DonationContext";
-import { Lock, Heart, Sparkles } from "lucide-react";
+import { Lock, Heart, Sparkles, Copy } from "lucide-react";
+import { toast } from "sonner";
+
+const PIX_CODE = "00020126360014br.gov.bcb.pix0114323992450001205204000053039865802BR5925INSTITUTO PRETO NO BRANCO6014BELO HORIZONTE62070503***6304C364";
 
 const onceValues = [30, 50, 100];
 
@@ -60,7 +63,7 @@ const DonationFormSection = () => {
             Apoie
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-3">
-            Finalize sua doação 💛
+            {type === "once" ? "Doe via Pix 💛" : "Finalize sua doação 💛"}
           </h2>
         </div>
 
@@ -103,9 +106,38 @@ const DonationFormSection = () => {
             </>
           ) : (
             <>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 Sua doação vai direto para a construção do Instituto. Cada real conta.
               </p>
+
+              <div className="bg-gradient-to-r from-accent via-warm-gold-light to-accent rounded-xl p-5 mb-4 border border-secondary/20">
+                <p className="text-xs font-semibold text-foreground mb-2 text-center">Chave Pix (copia e cola)</p>
+                <p className="text-[10px] md:text-xs text-muted-foreground break-all font-mono bg-background/60 rounded-lg p-2 mb-3">
+                  {PIX_CODE}
+                </p>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(PIX_CODE);
+                    } catch {
+                      const ta = document.createElement("textarea");
+                      ta.value = PIX_CODE;
+                      document.body.appendChild(ta);
+                      ta.select();
+                      document.execCommand("copy");
+                      document.body.removeChild(ta);
+                    }
+                    toast.success("Chave Pix copiada!");
+                  }}
+                  className="w-full gradient-primary text-primary-foreground py-3 rounded-full text-sm font-bold hover:opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                >
+                  <Copy size={16} />
+                  Copiar chave Pix
+                </button>
+              </div>
+
+              <p className="text-xs font-medium text-foreground mb-2 text-center">Ou escolha um valor para doar com cartão:</p>
               <div className="grid grid-cols-4 gap-2 mb-6">
                 {onceValues.map((v) => (
                   <button
