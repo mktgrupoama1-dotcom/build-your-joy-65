@@ -1,4 +1,4 @@
-import { Zap, Activity, Mic, Smile, Brain, HandHeart } from "lucide-react";
+import { Zap, Activity, Mic, Smile, Brain, HandHeart, Wind } from "lucide-react";
 import FloatingParticles from "./FloatingParticles";
 
 const treatments = [
@@ -8,6 +8,7 @@ const treatments = [
   { icon: Smile, title: "Odontologia", desc: "Tratamento de sequelas bucais causadas pelo tratamento oncológico.", color: "from-secondary to-secondary/80", shadow: "shadow-secondary/20" },
   { icon: Brain, title: "Psicologia", desc: "Suporte emocional, autoestima e reintegração social.", color: "from-primary to-primary/80", shadow: "shadow-primary/20" },
   { icon: HandHeart, title: "Reabilitação Funcional", desc: "Programas integrados para retomada das atividades do dia a dia.", color: "from-secondary to-secondary/80", shadow: "shadow-secondary/20" },
+  { icon: Wind, title: "Ozonioterapia", desc: "Terapia complementar com ozônio para auxiliar na recuperação tecidual e no bem-estar.", color: "from-primary to-primary/80", shadow: "shadow-primary/20" },
 ];
 
 const TreatmentsSection = () => {
