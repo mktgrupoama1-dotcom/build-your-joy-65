@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useDonation } from "@/contexts/DonationContext";
-import { Lock, Heart, Sparkles, Copy } from "lucide-react";
+import { Lock, Heart, Sparkles, Copy, QrCode } from "lucide-react";
 import { toast } from "sonner";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
+import pixQrCode from "@/assets/pix-qrcode.png";
 
 const PIX_CODE = "00020126360014br.gov.bcb.pix0114323992450001205204000053039865802BR5925INSTITUTO PRETO NO BRANCO6014BELO HORIZONTE62070503***6304C364";
 
@@ -110,32 +112,62 @@ const DonationFormSection = () => {
                 Sua doação vai direto para a construção do Instituto. Cada real conta.
               </p>
 
-              <div className="bg-gradient-to-r from-accent via-warm-gold-light to-accent rounded-xl p-5 mb-4 border border-secondary/20">
-                <p className="text-xs font-semibold text-foreground mb-2 text-center">Chave Pix (copia e cola)</p>
-                <p className="text-[10px] md:text-xs text-muted-foreground break-all font-mono bg-background/60 rounded-lg p-2 mb-3">
-                  {PIX_CODE}
-                </p>
-                <button
-                  type="button"
-                  onClick={async () => {
-                    try {
-                      await navigator.clipboard.writeText(PIX_CODE);
-                    } catch {
-                      const ta = document.createElement("textarea");
-                      ta.value = PIX_CODE;
-                      document.body.appendChild(ta);
-                      ta.select();
-                      document.execCommand("copy");
-                      document.body.removeChild(ta);
-                    }
-                    toast.success("Chave Pix copiada!");
-                  }}
-                  className="w-full gradient-primary text-primary-foreground py-3 rounded-full text-sm font-bold hover:opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
-                >
-                  <Copy size={16} />
-                  Copiar chave Pix
-                </button>
-              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="w-full gradient-vivid text-primary-foreground py-4 rounded-full text-base font-bold hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-xl hover:scale-[1.02] flex items-center justify-center gap-2 mb-4"
+                  >
+                    <QrCode size={18} />
+                    DOE VIA PIX
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="text-center text-2xl">Doe via Pix 💛</DialogTitle>
+                    <DialogDescription className="text-center">
+                      Escaneie o QR Code ou copie a chave Pix abaixo
+                    </DialogDescription>
+                  </DialogHeader>
+
+                  <div className="flex justify-center my-2">
+                    <div className="bg-background p-3 rounded-2xl border-2 border-primary/20 shadow-md">
+                      <img
+                        src={pixQrCode}
+                        alt="QR Code Pix do Instituto Preto no Branco"
+                        className="w-56 h-56 object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-accent via-warm-gold-light to-accent rounded-xl p-4 border border-secondary/20">
+                    <p className="text-xs font-semibold text-foreground mb-2 text-center">Chave Pix (copia e cola)</p>
+                    <p className="text-[10px] md:text-xs text-muted-foreground break-all font-mono bg-background/60 rounded-lg p-2 mb-3">
+                      {PIX_CODE}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        try {
+                          await navigator.clipboard.writeText(PIX_CODE);
+                        } catch {
+                          const ta = document.createElement("textarea");
+                          ta.value = PIX_CODE;
+                          document.body.appendChild(ta);
+                          ta.select();
+                          document.execCommand("copy");
+                          document.body.removeChild(ta);
+                        }
+                        toast.success("Chave Pix copiada!");
+                      }}
+                      className="w-full gradient-primary text-primary-foreground py-3 rounded-full text-sm font-bold hover:opacity-90 transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+                    >
+                      <Copy size={16} />
+                      Copiar chave Pix
+                    </button>
+                  </div>
+                </DialogContent>
+              </Dialog>
 
               <p className="text-xs font-medium text-foreground mb-2 text-center">Ou escolha um valor para doar com cartão:</p>
               <div className="grid grid-cols-4 gap-2 mb-6">
