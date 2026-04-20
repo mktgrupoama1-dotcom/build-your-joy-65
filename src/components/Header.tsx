@@ -7,7 +7,7 @@ const navItems = [
   { label: "O Projeto", href: "#projeto" },
   { label: "Tratamentos", href: "#tratamentos" },
   { label: "Impacto", href: "#impacto" },
-  { label: "Apoie", href: "#apoie" },
+  { label: "Apoie", href: "#formulario-doacao" },
 ];
 
 const Header = () => {
@@ -30,7 +30,7 @@ const Header = () => {
             </a>
           ))}
           <a
-            href="#apoie"
+            href="#formulario-doacao"
             className="gradient-primary text-primary-foreground px-7 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 hover:scale-105 flex items-center gap-2"
           >
             <Heart size={18} />
@@ -54,7 +54,7 @@ const Header = () => {
             </a>
           ))}
           <a
-            href="#apoie"
+            href="#formulario-doacao"
             onClick={() => setOpen(false)}
             className="block mt-3 gradient-primary text-primary-foreground text-center px-5 py-2.5 rounded-full text-sm font-semibold shadow-md"
           >
