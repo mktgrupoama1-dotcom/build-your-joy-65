@@ -11,13 +11,13 @@ const steps = [
 ];
 
 const statusItems = [
+  { label: "Doação do terreno", status: "100%", done: true },
+  { label: "Topografia", status: "100%", done: true },
+  { label: "Projeto arquitetônico", status: "100%", done: true },
+  { label: "Projetos de execução", status: "60%", done: false, progress: 60 },
+  { label: "Sondagem", status: "100%", done: true },
   { label: "Aprovação da prefeitura", status: "Em andamento", done: false },
   { label: "Demolição e preparação do terreno", status: "Em andamento", done: false },
-  { label: "Projeto de engenharia", status: "60%", done: false, progress: 60 },
-  { label: "Projeto arquitetônico", status: "100%", done: true },
-  { label: "Compra do terreno", status: "100%", done: true },
-  { label: "Topografia", status: "100%", done: true },
-  { label: "Sondagem feita", status: "100%", done: true },
 ];
 
 const ConstructionSection = () => {
