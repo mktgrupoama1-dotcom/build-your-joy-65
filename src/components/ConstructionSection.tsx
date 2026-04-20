@@ -42,34 +42,56 @@ const ConstructionSection = () => {
             <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
               📊 Status da Obra
             </h3>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {statusItems.map((item, i) => (
-                <div key={i} className="flex items-center gap-3 bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-border hover:border-primary/30 hover:shadow-lg card-hover-lift group">
-                  {item.done ? (
-                    <CheckCircle2 size={22} className="text-green-500 shrink-0" />
-                  ) : (
-                    <Clock size={22} className="text-secondary shrink-0 animate-pulse-soft" />
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-foreground font-medium text-sm">{item.label}</p>
-                    {item.progress && (
-                      <div className="w-full bg-muted rounded-full h-2 mt-1.5">
-                        <div
-                          className="gradient-primary h-2 rounded-full transition-all duration-500"
-                          style={{ width: `${item.progress}%` }}
-                        />
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Coluna: Concluídos */}
+              <div>
+                <h4 className="text-sm font-semibold text-green-600 mb-3 flex items-center gap-2">
+                  <CheckCircle2 size={16} />
+                  Concluídos
+                </h4>
+                <div className="space-y-2">
+                  {statusItems.filter(item => item.done).map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 bg-background/90 backdrop-blur-sm rounded-xl p-3 border border-green-200/50 hover:shadow-md transition-all">
+                      <CheckCircle2 size={20} className="text-green-500 shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-foreground font-medium text-sm">{item.label}</p>
                       </div>
-                    )}
-                  </div>
-                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full shrink-0 ${
-                    item.done
-                      ? "bg-green-100 text-green-700"
-                      : "bg-secondary/20 text-secondary-foreground"
-                  }`}>
-                    {item.status}
-                  </span>
+                      <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 text-green-700 shrink-0">
+                        {item.status}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Coluna: Em Andamento */}
+              <div>
+                <h4 className="text-sm font-semibold text-secondary mb-3 flex items-center gap-2">
+                  <Clock size={16} />
+                  Em Andamento
+                </h4>
+                <div className="space-y-2">
+                  {statusItems.filter(item => !item.done).map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 bg-background/90 backdrop-blur-sm rounded-xl p-3 border border-secondary/20 hover:border-primary/30 hover:shadow-lg card-hover-lift group">
+                      <Clock size={20} className="text-secondary shrink-0 animate-pulse-soft" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-foreground font-medium text-sm">{item.label}</p>
+                        {item.progress && (
+                          <div className="w-full bg-muted rounded-full h-2 mt-1.5">
+                            <div
+                              className="gradient-primary h-2 rounded-full transition-all duration-500"
+                              style={{ width: `${item.progress}%` }}
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-secondary/20 text-secondary-foreground shrink-0">
+                        {item.status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
