@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useDonation } from "@/contexts/DonationContext";
-import { Lock, Heart, Sparkles, Copy } from "lucide-react";
+import { Lock, Heart, Sparkles, Copy, QrCode } from "lucide-react";
 import { toast } from "sonner";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
+import pixQrCode from "@/assets/pix-qrcode.png";
 
 const PIX_CODE = "00020126360014br.gov.bcb.pix0114323992450001205204000053039865802BR5925INSTITUTO PRETO NO BRANCO6014BELO HORIZONTE62070503***6304C364";
 
